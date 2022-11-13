@@ -1,8 +1,9 @@
-﻿// 1lab.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+﻿// 2lab_Sort.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 
 #include <iostream>
 #include <fstream>
+
 #include "Container.h"
 
 using namespace std;
@@ -33,6 +34,8 @@ int main(int argc, char* argv[])
     }
 
     ofst << "Filled container. " << endl;
+
+    Sort(C); //Сортировка контейнера
 
     Out_Container(C, ofst); //Вывод контейнера
 
