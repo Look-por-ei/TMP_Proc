@@ -1,8 +1,7 @@
-﻿// 6lab.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+﻿// 7lab_b.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 
 #include <iostream>
-#include <fstream>
 
 #include "Container.h"
 
@@ -53,6 +52,8 @@ int main(int argc, char* argv[]) {
     Out_Container(C, ofst); //Вывод контейнера
 
     Out_Only_Two_Dim(C, ofst); //Вывод только двумерного массива
+
+    Multi_Method(C, ofst); //Вызов мультиметода
 
     Clear_Container(C); //Очистка контейнера
 

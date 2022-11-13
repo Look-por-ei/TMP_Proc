@@ -35,4 +35,7 @@ void Sort(Container& C);
 //Функция вывода только двумерных массивов
 void Out_Only_Two_Dim(Container& C, ofstream& ofst);
 
+//Функция мультиметода
+void Multi_Method(Container& C, ofstream& ofst);
+
 #endif //CONTAINER_H
