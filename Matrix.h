@@ -4,6 +4,7 @@
 #include "Key.h"
 #include "Diagonal_matrix.h"
 #include "Two_dimensional_array.h"
+#include "Triangular_matrix.h"
 
 //Структура "матрицы"
 struct Matrix {
@@ -11,10 +12,11 @@ struct Matrix {
     int N; //Длина массива
     Key_out K_o; //Способ вывода матрицы
 
-    //Объект диагональной матрицы или обычного двумерного массива
+    //Объект диагональной матрицы, обычного двумерного массива или треугольной матрицы
     union {
         Diagonal_matrix D_m;
         Two_dimensional_array T_d_a;
+        Triangular_matrix T_m;
     };
 };
 
