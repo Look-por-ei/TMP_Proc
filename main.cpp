@@ -1,4 +1,4 @@
-﻿// 5lab.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+﻿// 6lab.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 
 #include <iostream>
@@ -8,8 +8,7 @@
 
 using namespace std;
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
     if (argc != 3) {
         cout << "incorrect command line! "
             "Waited: command in_file out_file"
@@ -19,8 +18,7 @@ int main(int argc, char* argv[])
 
     ifstream ifst(argv[1]);
 
-    if (!ifst.is_open())
-    {
+    if (!ifst.is_open()) {
         cout << "No input file found or could not open!" << endl;
         system("pause");
         return 1;
@@ -28,8 +26,7 @@ int main(int argc, char* argv[])
 
     ofstream ofst(argv[2]);
 
-    if (!ofst.is_open())
-    {
+    if (!ofst.is_open()) {
         cout << "No output file found or could not open!" << endl;
         system("pause");
         return 1;
@@ -37,26 +34,25 @@ int main(int argc, char* argv[])
 
     cout << "Start" << endl;
 
-    Container C; //Объявляем новый контейнер
+    Container C; //Объявление нового контейнера
 
-    Init_Container(C); //Инициализируем контейнер
+    Init_Container(C); //Инициализация контейнера
 
-    In_Container(C, ifst); //Записываем элементы в контейнер
+    In_Container(C, ifst); //Запись элементов в контейнер
 
-    //Проверка на полное заполнение контейнера до максимума
-    if (C.Len == C.Max_len)
-    {
+    //Проверка заполнение контейнера до максимума
+    if (C.Len == C.Max_len) {
         ofst << "Conteiner is full (" << C.Max_len << " elemets)!" << endl <<
             "It can't accommodate more elements." << endl;
     }
 
-    ofst << "Filled container. " << endl;
+    ofst << "Filled and sorted container. " << endl;
 
     Sort(C); //Сортировка контейнера
 
     Out_Container(C, ofst); //Вывод контейнера
 
-    Out_Only_Two_Dim(C, ofst); //Вывод только обычного двумерного массива
+    Out_Only_Two_Dim(C, ofst); //Вывод только двумерного массива
 
     Clear_Container(C); //Очистка контейнера
 
