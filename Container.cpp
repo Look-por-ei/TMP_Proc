@@ -27,13 +27,15 @@ void Out_Container(Container& C, ofstream& ofst) {
     {
         ofst << i << ": "; //Выводим номер матрицы
         Out_Matrix(C.Cont[i], ofst); //Выводим матрицу
+
+        ofst << "Sum of matrix elements = " << Sum_Matrix(C.Cont[i]) << endl;
     }
 }
 
 void Clear_Container(Container& C) {
     for (int i = 0; i < C.Len; i++) 
     {
-        delete C.Cont[i]; //Очищаем память, выделенную для каждой матрицы
+        delete C.Cont[i]; //Очищаем память, вылеленную для каждой матрицы
     }
     
     C.Len = 0;
