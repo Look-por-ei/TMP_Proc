@@ -1,36 +1,84 @@
-Filled and sorted container. 
-Container contains 3 elements.
-
-0: It's triangular matrix with dimension = 4
-1 0 0 0 
-2 3 0 0 
-4 5 6 0 
-7 8 9 0 
-
-Sum of matrix elements = 10
-
+Filled container. 
+Container contains 4 elements.
+0: It's two dimensional matrix with dimension = 3
+1 2 3 
+4 0 6 
+7 5 9 
 1: It's diagonal matrix with dimension = 4
 9 0 0 0 
 0 7 0 0 
 0 0 2 0 
 0 0 0 1 
+2: It's diagonal matrix with dimension = 4
+2 0 0 0 
+0 1 0 0 
+0 0 8 0 
+0 0 0 3 
+3: It's two dimensional matrix with dimension = 3
+1 5 3 
+4 7 0 
+1 5 1 
+Multimethod.
 
-Sum of matrix elements = 19
-
-2: It's two dimensional matrix with dimension = 3
+Two Dimensional Array and Diagonal Matrix.
+It's two dimensional matrix with dimension = 3
 1 2 3 
 4 0 6 
 7 5 9 
-
-Sum of matrix elements = 37
-
-Only Two Dimensional arrays.
-
-2: It's two dimensional matrix with dimension = 3
+It's diagonal matrix with dimension = 4
+9 0 0 0 
+0 7 0 0 
+0 0 2 0 
+0 0 0 1 
+Two Dimensional Array and Diagonal Matrix.
+It's two dimensional matrix with dimension = 3
 1 2 3 
 4 0 6 
 7 5 9 
-
+It's diagonal matrix with dimension = 4
+2 0 0 0 
+0 1 0 0 
+0 0 8 0 
+0 0 0 3 
+Two Dimensional Array and Two Dimensional Array.
+It's two dimensional matrix with dimension = 3
+1 2 3 
+4 0 6 
+7 5 9 
+It's two dimensional matrix with dimension = 3
+1 5 3 
+4 7 0 
+1 5 1 
+Diagonal Matrix and Diagonal Matrix.
+It's diagonal matrix with dimension = 4
+9 0 0 0 
+0 7 0 0 
+0 0 2 0 
+0 0 0 1 
+It's diagonal matrix with dimension = 4
+2 0 0 0 
+0 1 0 0 
+0 0 8 0 
+0 0 0 3 
+Diagonal Matrix and Two Dimensional Array.
+It's diagonal matrix with dimension = 4
+9 0 0 0 
+0 7 0 0 
+0 0 2 0 
+0 0 0 1 
+It's two dimensional matrix with dimension = 3
+1 5 3 
+4 7 0 
+1 5 1 
+Diagonal Matrix and Two Dimensional Array.
+It's diagonal matrix with dimension = 4
+2 0 0 0 
+0 1 0 0 
+0 0 8 0 
+0 0 0 3 
+It's two dimensional matrix with dimension = 3
+1 5 3 
+4 7 0 
+1 5 1 
 Empty container. 
 Container contains 0 elements.
-

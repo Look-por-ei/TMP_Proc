@@ -7,7 +7,7 @@
 
 using namespace std;
 
-//Структура "контейнер"
+//Контейнер
 struct Container {
     enum { 
         Max_len = 100 
@@ -23,16 +23,13 @@ void Init_Container(Container& C);
 //Функция ввода элементов в контейнер
 void In_Container(Container& C, ifstream& ifst);
 
-//Функция вывода контейнера
+//Функция вывод контейнера
 void Out_Container(Container& C, ofstream& ofst);
 
 //Функция очистки контейнера
 void Clear_Container(Container& C);
 
-//Функция сортировки контейнера
-void Sort(Container& C);
-
-//Функция вывода только двумерных массивов
-void Out_Only_Two_Dim(Container& C, ofstream& ofst);
+//Функция мультиметода
+void Multi_Method(Container& C, ofstream& ofst);
 
 #endif //CONTAINER_H

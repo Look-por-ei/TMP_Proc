@@ -2,23 +2,17 @@
 #define DIAGONAL_MATRIX_H
 
 #include <fstream>
-
-#include "Key.h"
-
 using namespace std;
 
-//Структура "диагональная матрица"
+//Структура диагональной матрицы
 struct Diagonal_matrix {
-    int* Array; //Массив
+    int* Array;
 };
 
 //Функция ввода диагональной матрицы
 void In_Diagonal_matrix(int N, Diagonal_matrix& D_m, ifstream& ifst);
 
 //Функция вывода диагональной матрицы
-void Out_Diagonal_matrix(Key_out K_o, int N, Diagonal_matrix& D_m, ofstream& ofst);
-
-//Функция подсчета суммы элементов диагональной матрицы
-int Sum_Diagonal_matrix(int N, Diagonal_matrix& D_m);
+void Out_Diagonal_matrix(int N, Diagonal_matrix& D_m, ofstream& ofst);
 
 #endif //DIAGONAL_MATRIX_H

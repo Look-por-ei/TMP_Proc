@@ -1,16 +1,19 @@
 #include "Container.h"
+#include "Key.h"
 
 void Init_Container(Container& C) {
     C.Len = 0;
 }
 
 void In_Container(Container& C, ifstream& ifst) {
-    while (!ifst.eof())
+    while (!ifst.eof()) //Читаем до конца файла
     {
-        if ((C.Cont[C.Len] = In_Matrix(ifst))) { 
+        if ((C.Cont[C.Len] = In_Matrix(ifst)) != 0) //Считываем очередную матрицу 
+        { 
             C.Len++;
 
-            if (C.Len == C.Max_len) {
+            if (C.Len == C.Max_len) //Проверка на переполнение контейнера
+            {
                 break;
             }
         }
@@ -19,45 +22,60 @@ void In_Container(Container& C, ifstream& ifst) {
 
 void Out_Container(Container& C, ofstream& ofst) {
     ofst << "Container contains " << C.Len 
-        << " elements." << endl << endl;
+        << " elements." << endl; //Выводим длину контейнера
 
-    for (int i = 0; i < C.Len; i++) {
-        ofst << i << ": "; 
-        Out_Matrix(C.Cont[i], ofst); 
-
-        if (C.Cont[i]->K != ERROR) {
-            ofst << "Sum of matrix elements = " << Sum_Matrix(C.Cont[i]) << endl << endl;
-        }
+    for (int i = 0; i < C.Len; i++)
+    {
+        ofst << i << ": "; //Выводим номер матрицы
+        Out_Matrix(C.Cont[i], ofst); //Выводим матрицу
     }
 }
 
 void Clear_Container(Container& C) {
-    for (int i = 0; i < C.Len; i++)  {
-        delete C.Cont[i]; 
+    for (int i = 0; i < C.Len; i++) 
+    {
+        delete C.Cont[i]; //Очищаем память, вылеленную для каждой матрицы
     }
     
     C.Len = 0;
 }
 
-void Sort(Container& C) {
-    for (int i = 0; i < C.Len - 1; i++)  { 
-        for (int j = i + 1; j < C.Len; j++)  { 
-            if (Compare(C.Cont[i], C.Cont[j]))  { 
-                Matrix* Temp = C.Cont[i]; 
-                C.Cont[i] = C.Cont[j]; 
-                C.Cont[j] = Temp; 
+void Multi_Method (Container& C, ofstream& ofst) {
+    ofst << "Multimethod." << endl << endl;
+    
+    for (int i = 0; i < C.Len - 1; i++) { 
+        for (int j = i + 1; j < C.Len; j++) { 
+            switch (C.Cont[i]->K) { 
+            case TWO_DIMENSIONAL_ARRAY: 
+                switch (C.Cont[j]->K) { 
+                case TWO_DIMENSIONAL_ARRAY: 
+                    ofst << "Two Dimensional Array and Two Dimensional Array." << endl; 
+                    break; 
+                case DIAGONAL_MATRIX: 
+                    ofst << "Two Dimensional Array and Diagonal Matrix." << endl; 
+                    break; 
+                default: 
+                    ofst << "Unknown type" << endl; 
+                } 
+                break; 
+            case DIAGONAL_MATRIX: 
+                switch (C.Cont[j]->K) { 
+                case TWO_DIMENSIONAL_ARRAY: 
+                    ofst << "Diagonal Matrix and Two Dimensional Array." << endl; 
+                    break; 
+                case DIAGONAL_MATRIX: 
+                    ofst << "Diagonal Matrix and Diagonal Matrix." << endl; 
+                    break; 
+                default: 
+                    ofst << "Unknown type" << endl; 
+                } 
+                break; 
+            default: 
+                ofst << "Unknown type" << endl; 
             } 
+            
+            Out_Matrix(C.Cont[i], ofst); 
+            Out_Matrix(C.Cont[j], ofst); 
         } 
-    }
-}
-
-void Out_Only_Two_Dim(Container& C, ofstream& ofst) {
-    ofst << "Only Two Dimensional arrays." << endl << endl;
-
-    for (int i = 0; i < C.Len; i++) {
-        if (C.Cont[i]->K == TWO_DIMENSIONAL_ARRAY) {
-            ofst << i << ": ";
-            Out_Matrix(C.Cont[i], ofst);
-        }
     }
 }
