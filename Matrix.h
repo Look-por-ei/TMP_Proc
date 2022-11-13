@@ -20,7 +20,7 @@ struct Matrix {
 //Функция ввода матрицы
 Matrix* In_Matrix(ifstream& ifst);
 
-//Функция вывода матрицы
+//Функция вывода матрица
 void Out_Matrix(Matrix* M, ofstream& ofst);
 
 #endif //MATRIX_H

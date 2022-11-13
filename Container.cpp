@@ -33,8 +33,21 @@ void Out_Container(Container& C, ofstream& ofst) {
 void Clear_Container(Container& C) {
     for (int i = 0; i < C.Len; i++) 
     {
-        delete C.Cont[i]; //Очищаем память, выделенную для каждой матрицы
+        delete C.Cont[i]; //Очищаем память, вылеленную для каждой матрицы
     }
     
     C.Len = 0;
+}
+
+void Out_Only_Two_Dim(Container& C, ofstream& ofst) {
+    ofst << endl << "Only Two Dimensional arrays." << endl;
+
+    for (int i = 0; i < C.Len; i++)
+    {
+        if (C.Cont[i]->K == TWO_DIMENSIONAL_ARRAY) //Проверка того, что матрица - обычный думерный массив
+        {
+            ofst << i << ": ";
+            Out_Matrix(C.Cont[i], ofst);
+        }
+    }
 }
