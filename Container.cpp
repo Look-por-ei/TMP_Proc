@@ -33,7 +33,7 @@ void Out_Container(Container& C, ofstream& ofst) {
 void Clear_Container(Container& C) {
     for (int i = 0; i < C.Len; i++) 
     {
-        delete C.Cont[i]; //Очищаем память, выделенную для каждой матрицы
+        delete C.Cont[i]; //Очищаем память, вылеленную для каждой матрицы
     }
     
     C.Len = 0;
