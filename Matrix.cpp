@@ -3,19 +3,19 @@
 #include "Diagonal_matrix.h"
 
 Matrix* In_Matrix(ifstream& ifst) {
-    Matrix* M; //Ñîçäàåì óêàçàòåëü íà ìàòðèöó
+    Matrix* M; //Ã‘Ã®Ã§Ã¤Ã Ã¥Ã¬ Ã³ÃªÃ Ã§Ã Ã²Ã¥Ã«Ã¼ Ã­Ã  Ã¬Ã Ã²Ã°Ã¨Ã¶Ã³
     int K;
 
-    ifst >> K; //Ñ÷èòûâàåì èäåíòèôèêàòîð ìàòðèöû
+    ifst >> K; //Ã‘Ã·Ã¨Ã²Ã»Ã¢Ã Ã¥Ã¬ Ã¨Ã¤Ã¥Ã­Ã²Ã¨Ã´Ã¨ÃªÃ Ã²Ã®Ã° Ã¬Ã Ã²Ã°Ã¨Ã¶Ã»
 
     if (K == 1)
     {
-        M = new Matrix; //Âûäåëÿåì ïàìÿòü ïîä ìàòðèöó
-        M->K = TWO_DIMENSIONAL_ARRAY; //Çàïèñûâàåì òèï ìàòðèöû
+        M = new Matrix; //Ã‚Ã»Ã¤Ã¥Ã«Ã¿Ã¥Ã¬ Ã¯Ã Ã¬Ã¿Ã²Ã¼ Ã¯Ã®Ã¤ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã³
+        M->K = TWO_DIMENSIONAL_ARRAY; //Ã‡Ã Ã¯Ã¨Ã±Ã»Ã¢Ã Ã¥Ã¬ Ã²Ã¨Ã¯ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã»
 
         int K_out = 0;
 
-        ifst >> K_out; //Ñ÷èòûâàåì ñïîñîá âûâîäà ìàòðèöû
+        ifst >> K_out; //Ã‘Ã·Ã¨Ã²Ã»Ã¢Ã Ã¥Ã¬ Ã±Ã¯Ã®Ã±Ã®Ã¡ Ã¢Ã»Ã¢Ã®Ã¤Ã  Ã¬Ã Ã²Ã°Ã¨Ã¶Ã»
 
         if (K_out == 1)
         {
@@ -30,20 +30,20 @@ Matrix* In_Matrix(ifstream& ifst) {
             M->K_o = ONE_DIMENSIONAL;
         }
 
-        ifst >> M->N; //Ñ÷èòûâàåì ðàçìåðíîñòü ìàòðèöû
+        ifst >> M->N; //Ã‘Ã·Ã¨Ã²Ã»Ã¢Ã Ã¥Ã¬ Ã°Ã Ã§Ã¬Ã¥Ã°Ã­Ã®Ã±Ã²Ã¼ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã»
         
-        In_Two_dimensional_array(M->N, M->T_d_a, ifst); //Ñ÷èòûâàåì ýëåìåíòû ìàòðèöû
+        In_Two_dimensional_array(M->N, M->T_d_a, ifst); //Ã‘Ã·Ã¨Ã²Ã»Ã¢Ã Ã¥Ã¬ Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã²Ã» Ã¬Ã Ã²Ã°Ã¨Ã¶Ã»
 
         return M;
     }
     else if (K == 2)
     {
-        M = new Matrix; //Âûäåëÿåì ïàìÿòü ïîä ìàòðèöó
-        M->K = DIAGONAL_MATRIX; //Çàïèñûâàåì òèï ìàòðèöû
+        M = new Matrix; //Ã‚Ã»Ã¤Ã¥Ã«Ã¿Ã¥Ã¬ Ã¯Ã Ã¬Ã¿Ã²Ã¼ Ã¯Ã®Ã¤ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã³
+        M->K = DIAGONAL_MATRIX; //Ã‡Ã Ã¯Ã¨Ã±Ã»Ã¢Ã Ã¥Ã¬ Ã²Ã¨Ã¯ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã»
 
         int K_out = 0;
 
-        ifst >> K_out; //Ñ÷èòûâàåì ñïîñîá âûâîäà ìàòðèöû
+        ifst >> K_out; //Ã‘Ã·Ã¨Ã²Ã»Ã¢Ã Ã¥Ã¬ Ã±Ã¯Ã®Ã±Ã®Ã¡ Ã¢Ã»Ã¢Ã®Ã¤Ã  Ã¬Ã Ã²Ã°Ã¨Ã¶Ã»
 
         if (K_out == 1)
         {
@@ -58,20 +58,20 @@ Matrix* In_Matrix(ifstream& ifst) {
             M->K_o = ONE_DIMENSIONAL;
         }
 
-        ifst >> M->N; //Ñ÷èòûâàåì ðàçìåðíîñòü ìàòðèöû
+        ifst >> M->N; //Ã‘Ã·Ã¨Ã²Ã»Ã¢Ã Ã¥Ã¬ Ã°Ã Ã§Ã¬Ã¥Ã°Ã­Ã®Ã±Ã²Ã¼ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã»
         
-        In_Diagonal_matrix(M->N, M->D_m, ifst); //Ñ÷èòûâàåì ýëåìåíòû ìàòðèöû
+        In_Diagonal_matrix(M->N, M->D_m, ifst); //Ã‘Ã·Ã¨Ã²Ã»Ã¢Ã Ã¥Ã¬ Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã²Ã» Ã¬Ã Ã²Ã°Ã¨Ã¶Ã»
 
         return M;
     }
     else if (K == 3)
     {
-        M = new Matrix; //Âûäåëÿåì ïàìÿòü ïîä ìàòðèöó
-        M->K = TRIANGULAR_MATRIX; //Çàïèñûâàåì òèï ìàòðèöû
+        M = new Matrix; //Ã‚Ã»Ã¤Ã¥Ã«Ã¿Ã¥Ã¬ Ã¯Ã Ã¬Ã¿Ã²Ã¼ Ã¯Ã®Ã¤ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã³
+        M->K = TRIANGULAR_MATRIX; //Ã‡Ã Ã¯Ã¨Ã±Ã»Ã¢Ã Ã¥Ã¬ Ã²Ã¨Ã¯ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã»
 
-        ifst >> M->N; //Ñ÷èòûâàåì ðàçìåðíîñòü ìàòðèöû
+        ifst >> M->N; //Ã‘Ã·Ã¨Ã²Ã»Ã¢Ã Ã¥Ã¬ Ã°Ã Ã§Ã¬Ã¥Ã°Ã­Ã®Ã±Ã²Ã¼ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã»
 
-        In_Triangular_matrix(M->N, M->T_m, ifst); //Ñ÷èòûâàåì ýëåìåíòû ìàòðèöû
+        In_Triangular_matrix(M->N, M->T_m, ifst); //Ã‘Ã·Ã¨Ã²Ã»Ã¢Ã Ã¥Ã¬ Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã²Ã» Ã¬Ã Ã²Ã°Ã¨Ã¶Ã»
 
         return M;
     }
@@ -84,15 +84,15 @@ Matrix* In_Matrix(ifstream& ifst) {
 void Out_Matrix(Matrix* M, ofstream& ofst) {
     if (M->K == TWO_DIMENSIONAL_ARRAY)
     {
-        Out_Two_dimensional_array(M->K_o, M->N, M->T_d_a, ofst); //Âûâîäèì îáû÷íûé äâóìåðíûé ìàññèâ
+        Out_Two_dimensional_array(M->K_o, M->N, M->T_d_a, ofst); //Ã‚Ã»Ã¢Ã®Ã¤Ã¨Ã¬ Ã®Ã¡Ã»Ã·Ã­Ã»Ã© Ã¤Ã¢Ã³Ã¬Ã¥Ã°Ã­Ã»Ã© Ã¬Ã Ã±Ã±Ã¨Ã¢
     }
     else if (M->K == DIAGONAL_MATRIX)
     {
-        Out_Diagonal_matrix(M->K_o, M->N, M->D_m, ofst); //Âûâîäèì äèàãîíàëüíóþ ìàòðèöó
+        Out_Diagonal_matrix(M->K_o, M->N, M->D_m, ofst); //Ã‚Ã»Ã¢Ã®Ã¤Ã¨Ã¬ Ã¤Ã¨Ã Ã£Ã®Ã­Ã Ã«Ã¼Ã­Ã³Ã¾ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã³
     }
     else if (M->K == TRIANGULAR_MATRIX)
     {
-        Out_Triangular_matrix(M->N, M->T_m, ofst); //Âûâîäèì äèàãîíàëüíóþ ìàòðèöó
+        Out_Triangular_matrix(M->N, M->T_m, ofst); //Ã‚Ã»Ã¢Ã®Ã¤Ã¨Ã¬ Ã¤Ã¨Ã Ã£Ã®Ã­Ã Ã«Ã¼Ã­Ã³Ã¾ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã³
     }
     else
     {
@@ -103,14 +103,19 @@ void Out_Matrix(Matrix* M, ofstream& ofst) {
 int Sum_Matrix(Matrix* M) {
     if (M->K == TWO_DIMENSIONAL_ARRAY)
     {
-        return Sum_Two_dimensional_array(M->N, M->T_d_a); //Ïîäñ÷åò ñóììû ýëåìåíòîâ îáû÷íîãî äâóìåðíîãî ìàññèâà
+        return Sum_Two_dimensional_array(M->N, M->T_d_a);
     }
     else if (M->K == DIAGONAL_MATRIX)
     {
-        return Sum_Diagonal_matrix(M->N, M->D_m); //Ïîäñ÷åò ñóììû ýëåìåíòîâ äèàãîíàëüíîé ìàòðèöû
+        return Sum_Diagonal_matrix(M->N, M->D_m);
     }
     else
     {
         return -1;
     }
+}
+
+bool Compare(Matrix* First, Matrix* Second)
+{
+    return Sum_Matrix(First) > Sum_Matrix(Second);
 }

@@ -21,4 +21,7 @@ void Out_Two_dimensional_array(Key_out K_o, int N, Two_dimensional_array& T_d_a,
 //Функция подсчета суммы элементов двумерного массива
 int Sum_Two_dimensional_array(int N, Two_dimensional_array& T_d_a);
 
+//Функция подсчета суммы элементов диагональной матрицы
+int Sum_Two_dimensional_array(int N, Two_dimensional_array& T_d_a);
+
 #endif //TWO_DIMENSIONAL_ARRAY_H
