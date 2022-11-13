@@ -9,12 +9,39 @@ void In_Two_dimensional_array(int N, Two_dimensional_array& T_d_a, ifstream& ifs
         T_d_a.Array[i] = new int[N]; //Выделение памяти под массив
     }
 
+    bool Error = false; //Идентификатор того, что какой-то элемент матрицы не является числом
+
     for (int i = 0; i < N; i++)
     {
         for (int j = 0; j < N; j++)
         {
-            ifst >> T_d_a.Array[i][j]; //Ввод элемента массива
+            string Temp_str = "";
+            ifst >> Temp_str;
+
+            //Проверяем, что не считали пустое значение
+            if (Temp_str == "")
+            {
+                T_d_a.Array = NULL;
+
+                return;
+            }
+
+            //Проверяем, что считанный символ - число
+            if (isdigit(int(signed char(Temp_str.front()))))
+            {
+                T_d_a.Array[i][j] = atoi(Temp_str.c_str());
+            }
+            else
+            {
+                Error = true; //Иначе - ошибка
+            }
         }
+    }
+
+    //Если была ошибка, то вернем пустой массив
+    if (Error)
+    {
+        T_d_a.Array = NULL;
     }
 }
 

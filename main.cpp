@@ -1,4 +1,4 @@
-﻿// 4lab.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+﻿// 5lab.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 
 #include <iostream>
@@ -16,8 +16,25 @@ int main(int argc, char* argv[])
             << endl;
         exit(1);
     }
+
     ifstream ifst(argv[1]);
+
+    if (!ifst.is_open())
+    {
+        cout << "No input file found or could not open!" << endl;
+        system("pause");
+        return 1;
+    }
+
     ofstream ofst(argv[2]);
+
+    if (!ofst.is_open())
+    {
+        cout << "No output file found or could not open!" << endl;
+        system("pause");
+        return 1;
+    }
+
     cout << "Start" << endl;
 
     Container C; //Объявляем новый контейнер

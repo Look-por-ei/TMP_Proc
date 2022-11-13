@@ -12,10 +12,34 @@ void In_Triangular_matrix(int N, Triangular_matrix& T_m, ifstream& ifst)
     }
 
     T_m.Array= new int[Array_size];
+
+    bool Error = false;
     
     for (int i = 0; i < Array_size; i++)
     {
-        ifst >> T_m.Array[i];
+        string Temp_str = "";
+        ifst >> Temp_str;
+
+        if (Temp_str == "")
+        {
+            T_m.Array = NULL;
+
+            return;
+        }
+
+        if (isdigit(int(signed char(Temp_str.front()))))
+        {
+            T_m.Array[i] = atoi(Temp_str.c_str());
+        }
+        else
+        {
+            Error = true;
+        }
+    }
+
+    if (Error)
+    {
+        T_m.Array = NULL;
     }
 }
 

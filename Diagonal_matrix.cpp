@@ -3,10 +3,34 @@
 void In_Diagonal_matrix(int N, Diagonal_matrix& D_m, ifstream& ifst)
 {
     D_m.Array = new int[N]; //Выделяем память для диагональной матрицы
+
+    bool Error = false;
     
     for (int i = 0; i < N; i++)
     {
-        ifst >> D_m.Array[i]; //Записываем новый элемент в матрицу
+        string Temp_str = "";
+        ifst >> Temp_str;
+
+        if (Temp_str == "")
+        {
+            D_m.Array = NULL;
+
+            return;
+        }
+
+        if (isdigit(int(signed char(Temp_str.front()))))
+        {
+            D_m.Array[i] = atoi(Temp_str.c_str());
+        }
+        else
+        {
+            Error = true;
+        }
+    }
+
+    if (Error)
+    {
+        D_m.Array = NULL;
     }
 }
 

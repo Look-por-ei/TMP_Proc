@@ -4,18 +4,59 @@
 
 Matrix* In_Matrix(ifstream& ifst) {
     Matrix* M; //Создаем указатель на матрицу
-    int K;
 
-    ifst >> K; //Считываем идентификатор матрицы
+    string Temp_str = "";
+    ifst >> Temp_str;
+
+    //Проверяем, что идентификатор матрицы - целое число от 1 до 3
+    if (Temp_str != "1" && Temp_str != "2" && Temp_str != "3" && Temp_str != "")
+    {
+        //Если строка содержит неверные символы, то дочитываем файл до конца
+        ifst >> Temp_str;
+        ifst >> Temp_str;
+        ifst >> Temp_str;
+
+        while (ifst.peek() != '\n')
+        {
+            ifst >> Temp_str;
+        }
+
+        M = new Matrix;
+
+        M->K = ERROR;
+
+        return M;
+    }
+
+    int K = atoi(Temp_str.c_str());
 
     if (K == 1)
     {
         M = new Matrix; //Выделяем память под матрицу
         M->K = TWO_DIMENSIONAL_ARRAY; //Записываем тип матрицы
 
-        int K_out = 0;
+        ifst >> Temp_str;
 
-        ifst >> K_out; //Считываем способ вывода матрицы
+        //Проверяем, что способ вывода матрицы - целое число от 1 до 3
+        if (Temp_str != "1" && Temp_str != "2" && Temp_str != "3")
+        {
+            //Если строка содержит неверные символы, то дочитываем файл до конца
+            ifst >> Temp_str;
+            ifst >> Temp_str;
+
+            while (ifst.peek() != '\n')
+            {
+                ifst >> Temp_str;
+            }
+
+            M = new Matrix;
+
+            M->K = ERROR;
+
+            return M;
+        }
+
+        int K_out = atoi(Temp_str.c_str());
 
         if (K_out == 1)
         {
@@ -30,9 +71,56 @@ Matrix* In_Matrix(ifstream& ifst) {
             M->K_o = ONE_DIMENSIONAL;
         }
 
-        ifst >> M->N; //Считываем размерность матрицы
+        ifst >> Temp_str;
+
+        //Проверяем, что размер матрицы - число большее нуля
+        if (atoi(Temp_str.c_str()) <= 0)
+        {
+            //Если строка содержит неверные символы, то дочитываем файл до конца
+            ifst >> Temp_str;
+
+            while (ifst.peek() != '\n')
+            {
+                ifst >> Temp_str;
+            }
+
+            M = new Matrix;
+
+            M->K = ERROR;
+
+            return M;
+        }
+
+        //Проверяем, что размер матрицы - целое число
+        for (int i = 0; i < Temp_str.size(); i++)
+        {
+            if ((Temp_str[i] == '.') || (Temp_str[i] == ','))
+            {
+                //Если строка содержит неверные символы, то дочитываем файл до конца
+                ifst >> Temp_str;
+
+                while (ifst.peek() != '\n')
+                {
+                    ifst >> Temp_str;
+                }
+
+                M = new Matrix;
+
+                M->K = ERROR;
+
+                return M;
+            }
+        }
+
+        M->N = atoi(Temp_str.c_str()); //Записываемразмерность матрицы
         
         In_Two_dimensional_array(M->N, M->T_d_a, ifst); //Считываем элементы матрицы
+
+        //Если вернули пустую матрицу, то она ошибочна
+        if (M->T_d_a.Array == NULL)
+        {
+            M->K = ERROR;
+        }
 
         return M;
     }
@@ -41,9 +129,26 @@ Matrix* In_Matrix(ifstream& ifst) {
         M = new Matrix; //Выделяем память под матрицу
         M->K = DIAGONAL_MATRIX; //Записываем тип матрицы
 
-        int K_out = 0;
+        ifst >> Temp_str;
 
-        ifst >> K_out; //Считываем способ вывода матрицы
+        if (Temp_str != "1" && Temp_str != "2" && Temp_str != "3")
+        {
+            ifst >> Temp_str;
+            ifst >> Temp_str;
+
+            while (ifst.peek() != '\n')
+            {
+                ifst >> Temp_str;
+            }
+
+            M = new Matrix;
+
+            M->K = ERROR;
+
+            return M;
+        }
+
+        int K_out = atoi(Temp_str.c_str());
 
         if (K_out == 1)
         {
@@ -58,9 +163,51 @@ Matrix* In_Matrix(ifstream& ifst) {
             M->K_o = ONE_DIMENSIONAL;
         }
 
-        ifst >> M->N; //Считываем размерность матрицы
+        ifst >> Temp_str;
+
+        if (atoi(Temp_str.c_str()) <= 0)
+        {
+            ifst >> Temp_str;
+
+            while (ifst.peek() != '\n')
+            {
+                ifst >> Temp_str;
+            }
+
+            M = new Matrix;
+
+            M->K = ERROR;
+
+            return M;
+        }
+
+        for (int i = 0; i < Temp_str.size(); i++)
+        {
+            if ((Temp_str[i] == '.') || (Temp_str[i] == ','))
+            {
+                ifst >> Temp_str;
+
+                while (ifst.peek() != '\n')
+                {
+                    ifst >> Temp_str;
+                }
+
+                M = new Matrix;
+
+                M->K = ERROR;
+
+                return M;
+            }
+        }
+
+        M->N = atoi(Temp_str.c_str()); //Записываемразмерность матрицы
         
         In_Diagonal_matrix(M->N, M->D_m, ifst); //Считываем элементы матрицы
+
+        if (M->D_m.Array == NULL)
+        {
+            M->K = ERROR;
+        }
 
         return M;
     }
@@ -69,9 +216,26 @@ Matrix* In_Matrix(ifstream& ifst) {
         M = new Matrix; //Выделяем память под матрицу
         M->K = TRIANGULAR_MATRIX; //Записываем тип матрицы
 
-        int K_out = 0;
+        ifst >> Temp_str;
 
-        ifst >> K_out; //Считываем способ вывода матрицы
+        if (Temp_str != "1" && Temp_str != "2" && Temp_str != "3")
+        {
+            ifst >> Temp_str;
+            ifst >> Temp_str;
+
+            while (ifst.peek() != '\n')
+            {
+                ifst >> Temp_str;
+            }
+
+            M = new Matrix;
+
+            M->K = ERROR;
+
+            return M;
+        }
+
+        int K_out = atoi(Temp_str.c_str());
 
         if (K_out == 1)
         {
@@ -86,9 +250,51 @@ Matrix* In_Matrix(ifstream& ifst) {
             M->K_o = ONE_DIMENSIONAL;
         }
 
-        ifst >> M->N; //Считываем размерность матрицы
+        ifst >> Temp_str;
+
+        if (atoi(Temp_str.c_str()) <= 0)
+        {
+            ifst >> Temp_str;
+
+            while (ifst.peek() != '\n')
+            {
+                ifst >> Temp_str;
+            }
+
+            M = new Matrix;
+
+            M->K = ERROR;
+
+            return M;
+        }
+
+        for (int i = 0; i < Temp_str.size(); i++)
+        {
+            if ((Temp_str[i] == '.') || (Temp_str[i] == ','))
+            {
+                ifst >> Temp_str;
+
+                while (ifst.peek() != '\n')
+                {
+                    ifst >> Temp_str;
+                }
+
+                M = new Matrix;
+
+                M->K = ERROR;
+
+                return M;
+            }
+        }
+
+        M->N = atoi(Temp_str.c_str()); //Записываемразмерность матрицы
 
         In_Triangular_matrix(M->N, M->T_m, ifst); //Считываем элементы матрицы
+
+        if (M->T_m.Array == NULL)
+        {
+            M->K = ERROR;
+        }
 
         return M;
     }
