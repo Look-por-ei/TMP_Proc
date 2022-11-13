@@ -26,4 +26,7 @@ Matrix* In_Matrix(ifstream& ifst);
 //Функция вывода матрица
 void Out_Matrix(Matrix* M, ofstream& ofst);
 
+//Функция подсчет суммы элементов матрицы
+int Sum_Matrix(Matrix* M);
+
 #endif //MATRIX_H

@@ -57,3 +57,18 @@ void Out_Two_dimensional_array(Key_out K_o, int N, Two_dimensional_array& T_d_a,
         ofst << endl;
     }
 }
+
+int Sum_Two_dimensional_array(int N, Two_dimensional_array& T_d_a)
+{
+    int Sum = 0;
+
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < N; j++)
+        {
+            Sum += T_d_a.Array[i][j];
+        }
+    }
+
+    return Sum;
+}

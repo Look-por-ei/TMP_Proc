@@ -70,3 +70,14 @@ void Out_Diagonal_matrix(Key_out K_o, int N, Diagonal_matrix& D_m, ofstream& ofs
         ofst << endl;
     }
 }
+
+int Sum_Diagonal_matrix(int N, Diagonal_matrix& D_m)
+{
+    int Sum = 0;
+
+    for (int i = 0; i < N; i++)
+    {
+        Sum += D_m.Array[i];
+    }
+    return Sum;
+}
