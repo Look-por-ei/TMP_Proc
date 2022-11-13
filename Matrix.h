@@ -23,7 +23,7 @@ struct Matrix {
 //Ôóíêöèÿ ââîäà ìàòðèöû
 Matrix* In_Matrix(ifstream& ifst);
 
-//Ôóíêöèÿ âûâîäà ìàòðèöà
+
 void Out_Matrix(Matrix* M, ofstream& ofst);
 
 //Ôóíêöèÿ ïîäñ÷åò ñóììû ýëåìåíòîâ ìàòðèöû
