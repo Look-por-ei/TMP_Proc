@@ -5,13 +5,13 @@ void Init_Container(Container& C) {
 }
 
 void In_Container(Container& C, ifstream& ifst) {
-    while (!ifst.eof()) //Г—ГЁГІГ ГҐГ¬ Г¤Г® ГЄГ®Г­Г¶Г  ГґГ Г©Г«Г 
+    while (!ifst.eof()) //Читаем до конца файла
     {
-        if ((C.Cont[C.Len] = In_Matrix(ifst)) != 0) //Г‘Г·ГЁГІГ»ГўГ ГҐГ¬ Г®Г·ГҐГ°ГҐГ¤Г­ГіГѕ Г¬Г ГІГ°ГЁГ¶Гі 
+        if ((C.Cont[C.Len] = In_Matrix(ifst)) != 0) //Считываем очередную матрицу 
         { 
             C.Len++;
 
-            if (C.Len == C.Max_len) //ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г  ГЇГҐГ°ГҐГЇГ®Г«Г­ГҐГ­ГЁГҐ ГЄГ®Г­ГІГҐГ©Г­ГҐГ°Г 
+            if (C.Len == C.Max_len) //Проверка на переполнение контейнера
             {
                 break;
             }
@@ -21,12 +21,12 @@ void In_Container(Container& C, ifstream& ifst) {
 
 void Out_Container(Container& C, ofstream& ofst) {
     ofst << "Container contains " << C.Len 
-        << " elements." << endl; //Г‚Г»ГўГ®Г¤ГЁГ¬ Г¤Г«ГЁГ­Гі ГЄГ®Г­ГІГҐГ©Г­ГҐГ°Г 
+        << " elements." << endl; //Выводим длину контейнера
 
     for (int i = 0; i < C.Len; i++)
     {
-        ofst << i << ": "; //Г‚Г»ГўГ®Г¤ГЁГ¬ Г­Г®Г¬ГҐГ° Г¬Г ГІГ°ГЁГ¶Г»
-        Out_Matrix(C.Cont[i], ofst); //Г‚Г»ГўГ®Г¤ГЁГ¬ Г¬Г ГІГ°ГЁГ¶Гі
+        ofst << i << ": "; //Выводим номер матрицы
+        Out_Matrix(C.Cont[i], ofst); //Выводим матрицу
 
         ofst << "Sum of matrix elements = " << Sum_Matrix(C.Cont[i]) << endl;
     }
@@ -35,30 +35,18 @@ void Out_Container(Container& C, ofstream& ofst) {
 void Clear_Container(Container& C) {
     for (int i = 0; i < C.Len; i++) 
     {
-        delete C.Cont[i]; //ГЋГ·ГЁГ№Г ГҐГ¬ ГЇГ Г¬ГїГІГј, ГўГ»Г«ГҐГ«ГҐГ­Г­ГіГѕ Г¤Г«Гї ГЄГ Г¦Г¤Г®Г© Г¬Г ГІГ°ГЁГ¶Г»
+        delete C.Cont[i]; //Очищаем память, вылеленную для каждой матрицы
     }
     
     C.Len = 0;
 }
 
-void Out_Only_Two_Dim(Container& C, ofstream& ofst) {
-    ofst << endl << "Only Two Dimensional arrays." << endl;
-
-    for (int i = 0; i < C.Len; i++)
-    {
-        if (C.Cont[i]->K == TWO_DIMENSIONAL_ARRAY) //ГЏГ°Г®ГўГҐГ°ГЄГ  ГІГ®ГЈГ®, Г·ГІГ® Г¬Г ГІГ°ГЁГ¶Г  - Г®ГЎГ»Г·Г­Г»Г© Г¤ГіГ¬ГҐГ°Г­Г»Г© Г¬Г Г±Г±ГЁГў
-        {
-            ofst << i << ": ";
-            Out_Matrix(C.Cont[i], ofst);
-        }
 void Sort(Container& C)
 {
-    //Г‘Г®Г°ГІГЁГ°ГіГҐГ¬ ГЇГіГ§Г»Г°ГјГЄГ®Г¬
     for (int i = 0; i < C.Len - 1; i++) 
     { 
         for (int j = i + 1; j < C.Len; j++) 
         { 
-            //ГЉГ®Г¬ГЇГ Г°Г ГІГ®Г°Г®Г¬ Г±Г°Г ГўГ­ГЁГўГ ГҐГ¬ Г±ГіГ¬Г¬Г» ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў Г¬Г ГІГ°ГЁГ¶
             if (Compare(C.Cont[i], C.Cont[j])) 
             { 
                 Matrix* Temp = C.Cont[i]; 
@@ -66,5 +54,18 @@ void Sort(Container& C)
                 C.Cont[j] = Temp; 
             } 
         } 
+    }
+}
+
+void Out_Only_Two_Dim(Container& C, ofstream& ofst) {
+    ofst << endl << "Only Two Dimensional arrays." << endl;
+
+    for (int i = 0; i < C.Len; i++)
+    {
+        if (C.Cont[i]->K == TWO_DIMENSIONAL_ARRAY) //Проверка того, что матрица - обычный думерный массив
+        {
+            ofst << i << ": ";
+            Out_Matrix(C.Cont[i], ofst);
+        }
     }
 }

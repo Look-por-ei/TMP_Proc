@@ -2,25 +2,25 @@
 
 void In_Two_dimensional_array(int N, Two_dimensional_array& T_d_a, ifstream& ifst)
 {
-    T_d_a.Array = new int* [N]; //Г‚Г»Г¤ГҐГ«ГҐГ­ГЁГҐ ГЇГ Г¬ГїГІГЁ ГЇГ®Г¤ Г¬Г Г±Г±ГЁГў
+    T_d_a.Array = new int* [N]; //Выделение памяти под массив
 
     for (int i = 0; i < N; i++)
     {
-        T_d_a.Array[i] = new int[N]; //Г‚Г»Г¤ГҐГ«ГҐГ­ГЁГҐ ГЇГ Г¬ГїГІГЁ ГЇГ®Г¤ Г¬Г Г±Г±ГЁГў
+        T_d_a.Array[i] = new int[N]; //Выделение памяти под массив
     }
 
     for (int i = 0; i < N; i++)
     {
         for (int j = 0; j < N; j++)
         {
-            ifst >> T_d_a.Array[i][j]; //Г‚ГўГ®Г¤ ГЅГ«ГҐГ¬ГҐГ­ГІГ  Г¬Г Г±Г±ГЁГўГ 
+            ifst >> T_d_a.Array[i][j]; //Ввод элемента массива
         }
     }
 }
 
 void Out_Two_dimensional_array(Key_out K_o, int N, Two_dimensional_array& T_d_a, ofstream& ofst)
 {
-    ofst << "It's two dimensional matrix with dimension = " << N << endl; //Г‚Г»ГўГ®Г¤ГЁГ¬ Г°Г Г§Г¬ГҐГ°Г­Г®Г±ГІГј Г¬Г Г±Г±ГЁГўГ 
+    ofst << "It's two dimensional matrix with dimension = " << N << endl; //Выводим размерность массива
 
     if (K_o == BY_LINE)
     {

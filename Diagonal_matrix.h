@@ -21,7 +21,4 @@ void Out_Diagonal_matrix(Key_out K_o, int N, Diagonal_matrix& D_m, ofstream& ofs
 //Функция подсчета суммы элементов диагональной матрицы
 int Sum_Diagonal_matrix(int N, Diagonal_matrix& D_m);
 
-//Функция подсчета суммы элементов диагональной матрицы
-int Sum_Diagonal_matrix(int N, Diagonal_matrix& D_m);
-
 #endif //DIAGONAL_MATRIX_H
